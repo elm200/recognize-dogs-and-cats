@@ -1,44 +1,26 @@
-# Flask などの必要なライブラリをインポートする
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 import numpy as np
+import time
+from pprint import pprint
 
-# 自身の名称を app という名前でインスタンス化する
 app = Flask(__name__)
 
-# メッセージをランダムに表示するメソッド
-def picked_up():
-    messages = [
-        "こんにちは、あなたの名前を入力してください",
-        "やあ！お名前は何ですか？",
-        "あなたの名前を教えてね"
-    ]
-    # NumPy の random.choice で配列からランダムに取り出し
-    return np.random.choice(messages)
-
-# ここからウェブアプリケーション用のルーティングを記述
-# index にアクセスしたときの処理
 @app.route('/')
 def index():
-    title = "ようこそ"
-    message = picked_up()
-    # index.html をレンダリングする
-    return render_template('index.html',
-                           message=message, title=title)
+    return render_template('index.html')
 
-# /post にアクセスしたときの処理
-@app.route('/post', methods=['GET', 'POST'])
-def post():
-    title = "こんにちは"
-    if request.method == 'POST':
-        # リクエストフォームから「名前」を取得して
-        name = request.form['name']
-        # index.html をレンダリングする
-        return render_template('index.html',
-                               name=name, title=title)
-    else:
-        # エラーなどでリダイレクトしたい場合はこんな感じで
-        return redirect(url_for('index'))
+@app.route('/upload', methods=['POST'])
+def upload():
+    # pprint(request.files)
+    upfile = request.files["upfile"]
+    upfile.save("./" + upfile.filename)
+    return "<h1>uploaded!</h1>"
 
 if __name__ == '__main__':
-    app.debug = True # デバッグモード有効化
-    app.run(host='0.0.0.0') # どこからでもアクセス可能に
+    app.debug = True
+#    app.run(host='0.0.0.0') # どこからでもアクセス可能に
+    app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024 # 10MiB
+    app.run()
+
+
+# app.logger.debug("upfiles = " + str(type(f)))

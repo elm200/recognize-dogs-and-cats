@@ -1,25 +1,24 @@
-{% extends "layout.html" %}
-{% block content %}
-  <!-- Form
-  ================================================== -->
-<div class="form">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <p class="lead">
-          {% if name %}
-            こんにちは {{ name }} さん
-          {% else %}
-            {{ message }}
-          {% endif %}
-        </p>
-        <form action="/post" method="post" class="form-inline">
-          <label for="name">名前</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-          <button type="submit" class="btn btn-default">送信する</button>
-        </form>
-      </div>
+<html>
+  <head>
+    <title>Distinguish dogs and cats</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/app.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/app.js"></script>
+  </head>
+  <body>
+    <div id="droparea">
+      <br>
+      <br>
+      <br>
+      ここにドロップしてください。
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
-  </div>
-</div>
-{% endblock %}
+    <br>
+    <br>
+    <div id="status1"></div>
+  </body>
+</html>
