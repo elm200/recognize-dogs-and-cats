@@ -1,26 +1,31 @@
-from flask import Flask, render_template, request
-import numpy as np
 import time
+import os
+import random
+from flask import Flask, render_template, request
+from glob import glob
 from pprint import pprint
+import json
+
+from lib import nn
 
 app = Flask(__name__)
+predictor = None
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', items=predictor.get_sample_items())
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    # pprint(request.files)
     upfile = request.files["upfile"]
-    upfile.save("./" + upfile.filename)
-    return "<h1>uploaded!</h1>"
+    img_file = "image" + str(random.randint(0, 999999)) + os.path.splitext(upfile.filename)[1]
+    img_path = os.path.join("./tmp/", img_file)
+    upfile.save(img_path)
+    item = predictor.get_image_item(img_path)
+    os.remove(img_path)
+    return json.dumps(item)
 
 if __name__ == '__main__':
-    app.debug = True
-#    app.run(host='0.0.0.0') # どこからでもアクセス可能に
     app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024 # 10MiB
+    predictor = nn.Predictor()
     app.run()
-
-
-# app.logger.debug("upfiles = " + str(type(f)))

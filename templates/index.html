@@ -1,24 +1,57 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Distinguish dogs and cats</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/app.css">
-    <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/app.js"></script>
-  </head>
-  <body>
-    <div id="droparea">
-      <br>
-      <br>
-      <br>
-      ここにドロップしてください。
-      <br>
-      <br>
-      <br>
-      <br>
+
+<head>
+  <title>Recognize Dogs and Cats</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/app.css">
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/app.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-2">
+      </div>
+      <div class="col-xs-8">
+        <div class="row">
+          <img src="/static/images/robot.png" class="logo">
+          <h1 class="title-caption text-muted">Recognize Dogs and Cats</h1>
+        </div>
+        <div id="droparea">
+          <p class="text-center text-capitalize">
+            Drop your image file here.
+          </p>
+        </div>
+        <table class="table table-striped samples">
+          {% for item in items %}
+          <tr>
+            <td>
+              <img src="/static/images/samples/{{ item.image }}">
+            </td>
+            <td>
+              <h2>I'm {{ item.prob }}% sure this is a <span class="text-uppercase"><strong>{{ item.kind }}</strong></span>.</h2>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+        <div id="status1"></div>
+        <div class="row text-center">
+          <p>
+            2017 <a href="mailto:eijisakai@gmail.com">Eiji Sakai</a>
+          </p>
+          <p>
+            Powered by tensorflow, Keras and Flask.
+            Special thanks to <a href="https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition">Kaggle</a> and <a href="http://goo.gl/rTKJ9z">the logo</a>.
+          </p>
+        </div>
+      </div>
+      <div class="col-xs-2">
+      </div>
     </div>
-    <br>
-    <br>
-    <div id="status1"></div>
-  </body>
+  </div>
+</body>
+
 </html>

@@ -1,66 +1,94 @@
+/* Special thanks to http://www.it-view.net/drag-and-drop-file-upload-jquery-178.html */
+
+img.logo {
+  margin-left: 20px;
+  margin-right: 5px;
+  width: 50px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+h1.title-caption {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.samples img {
+  max-width: 300px;
+  max-height: 300px;
+}
+
 #droparea {
-    border: 2px dotted #0B85A1;
-    width: 500px;
-    color: #92AAB0;
-    text-align: left;
-    vertical-align: middle;
-    padding: 10px 10px 10 10px;
-    margin-bottom: 10px;
-    font-size: 200%;
+  border: 2px dotted #0B85A1;
+  /* width: 500px; */
+  /* height: 500px; */
+  color: #92AAB0;
+  text-align: left;
+  vertical-align: middle;
+  padding: 50px 50px 50px 50px;
+  margin-bottom: 10px;
+  font-size: 200%;
 }
+
 .progressBar {
-    width: 200px;
-    height: 22px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    display: inline-block;
-    margin: 0px 10px 5px 5px;
-    vertical-align: top;
+  width: 200px;
+  height: 22px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  display: inline-block;
+  margin: 0px 10px 5px 5px;
+  vertical-align: top;
 }
+
 .progressBar div {
-    height: 100%;
-    color: #fff;
-    text-align: right;
-    line-height: 22px;
-    width: 0;
-    background-color: #0ba1b5;
-    border-radius: 3px;
+  height: 100%;
+  color: #fff;
+  text-align: right;
+  line-height: 22px;
+  width: 0;
+  background-color: #0ba1b5;
+  border-radius: 3px;
 }
+
 .statusbar {
-    border-top: 1px solid #A9CCD1;
-    min-height: 25px;
-    width: 700px;
-    padding: 10px 10px 0px 10px;
-    vertical-align: top;
+  border-top: 1px solid #A9CCD1;
+  min-height: 25px;
+  width: 700px;
+  padding: 10px 10px 0px 10px;
+  vertical-align: top;
 }
+
 .statusbar:nth-child(odd) {
-    background: #EBEFF0;
+  background: #EBEFF0;
 }
+
 .filename {
-    display: inline-block;
-    vertical-align: top;
-    width: 250px;
+  display: inline-block;
+  vertical-align: top;
+  width: 250px;
 }
+
 .filesize {
-    display: inline-block;
-    vertical-align: top;
-    color: #30693D;
-    width: 100px;
-    margin-left: 10px;
-    margin-right: 5px;
+  display: inline-block;
+  vertical-align: top;
+  color: #30693D;
+  width: 100px;
+  margin-left: 10px;
+  margin-right: 5px;
 }
+
 .abort {
-    background-color: #A8352F;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    display: inline-block;
-    color: #fff;
-    font-family: arial;
-    font-size: 13px;
-    font-weight: normal;
-    padding: 4px 15px;
-    cursor: pointer;
-    vertical-align: top;
+  background-color: #A8352F;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  display: inline-block;
+  color: #fff;
+  font-family: arial;
+  font-size: 13px;
+  font-weight: normal;
+  padding: 4px 15px;
+  cursor: pointer;
+  vertical-align: top;
 }
