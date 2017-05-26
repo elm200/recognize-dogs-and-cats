@@ -75,8 +75,8 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
-  $("#upfile").change(function(e) {
+  $("#upload").click(function(e) {
     e.preventDefault();
-    sendFileToServer(e.target.files[0]);
+    sendFileToServer($("#upfile")[0].files[0]);
   });
 });

@@ -3,11 +3,12 @@
 
 <head>
   <title>Recognize Dogs and Cats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/static/css/app.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/app.css?2">
   <script src="/static/js/jquery.min.js"></script>
   <script src="/static/js/bootstrap.min.js"></script>
-  <script src="/static/js/app.js"></script>
+  <script src="/static/js/app.js?2"></script>
 </head>
 
 <body>
@@ -25,7 +26,11 @@
             Drop your image file here.
           </p>
           <input type="file" value="upload" id="upfile">
+          <button class="btn btn-primary" id="upload">Upload</button>
         </div>
+        <p>
+          <strong>Note:</strong> Your uploaded files will <strong>NOT</strong> be saved in the server.
+        </p>
         <table class="table table-striped samples">
           {% for item in items %}
           <tr>
@@ -43,7 +48,7 @@
             2017 <a href="mailto:eijisakai@gmail.com">Eiji Sakai</a>
           </p>
           <p>
-            Powered by tensorflow, Keras and Flask. Special thanks to <a href="https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition">Kaggle</a>            and <a href="http://goo.gl/rTKJ9z">the logo</a>.
+            Powered by tensorflow, Keras and Flask. Special thanks to <a href="https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition">Kaggle</a> and <a href="http://goo.gl/rTKJ9z">the logo</a>.
           </p>
         </div>
       </div>
