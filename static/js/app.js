@@ -1,8 +1,26 @@
 $(document).ready(function() {
   // Special thanks to http://www.it-view.net/drag-and-drop-file-upload-jquery-178.html
-  function sendFilesToServer(files) {
+  function sendFileToServer(file) {
+    var fileReader = new FileReader();
+    fileReader.onload = function() {
+      var dataUri = this.result;
+      var html =
+          "<tr>"
+        + "  <td>"
+        + "    <img src=\"" + dataUri + "\">"
+        + "  </td>"
+        + "  <td>"
+        + "    <h2 class=\"result\">"
+        + "      Loading..."
+        + "    </h2>"
+        + "  </td>"
+        + "</tr>";
+      $(".samples").prepend(html);
+    }
+    fileReader.readAsDataURL(file);
+
     var formData = new FormData();
-    formData.append('upfile', files[0]);
+    formData.append('upfile', file);
     var jqXHR = $.ajax({
       url: "/upload",
       type: "POST",
@@ -17,6 +35,7 @@ $(document).ready(function() {
         + "% sure this is a <strong>" + data.kind + "</strong>");
     }).fail(function(xhr, status, error) {
       console.log("ajax failed!");
+      $(".result:first").html("Oops, something is wrong...");
     });
   }
 
@@ -37,24 +56,7 @@ $(document).ready(function() {
     $(this).css('border', '2px dotted #0B85A1');
     e.preventDefault();
     var files = e.originalEvent.dataTransfer.files;
-    var fileReader = new FileReader();
-    fileReader.onload = function() {
-      var dataUri = this.result;
-      var html =
-          "<tr>"
-        + "  <td>"
-        + "    <img src=\"" + dataUri + "\">"
-        + "  </td>"
-        + "  <td>"
-        + "    <h2 class=\"result\">"
-        + "      Loading..."
-        + "    </h2>"
-        + "  </td>"
-        + "</tr>";
-      $(".samples").prepend(html);
-    }
-    fileReader.readAsDataURL(files[0]);
-    sendFilesToServer(files);
+    sendFileToServer(files[0]);
   });
 
   $(document).on('dragenter', function(e) {
@@ -71,5 +73,10 @@ $(document).ready(function() {
   $(document).on('drop', function(e) {
     e.stopPropagation();
     e.preventDefault();
+  });
+
+  $("#upfile").change(function(e) {
+    e.preventDefault();
+    sendFileToServer(e.target.files[0]);
   });
 });
