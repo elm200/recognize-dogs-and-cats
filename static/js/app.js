@@ -15,7 +15,7 @@ $(document).ready(function() {
         + "    </h2>"
         + "  </td>"
         + "</tr>";
-      $(".samples").prepend(html);
+      $(html).prependTo(".samples").hide().fadeIn("slow");
     }
     fileReader.readAsDataURL(file);
 
@@ -77,6 +77,9 @@ $(document).ready(function() {
 
   $("#upload").click(function(e) {
     e.preventDefault();
-    sendFileToServer($("#upfile")[0].files[0]);
+    var file = $("#upfile")[0].files[0];
+    // clear input type=file
+    $('#upfile').replaceWith('<input type="file" id="upfile">');
+    sendFileToServer(file);
   });
 });
