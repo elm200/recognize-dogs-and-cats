@@ -15,7 +15,7 @@ $(document).ready(function() {
         + "    </h2>"
         + "  </td>"
         + "</tr>";
-      $(html).prependTo(".samples").hide().fadeIn("slow");
+      $(html).prependTo(".samples").hide().fadeIn(1000);
     }
     fileReader.readAsDataURL(file);
 
