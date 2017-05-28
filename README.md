@@ -5,8 +5,7 @@ Your uploaded photos will be deleted immediately after the automatic recognition
 
 The photos used to train the neural network are acquired from a [Kaggle competition](https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition).
 
-The recognition accuracy is currently around 85% (which is not so great).
-Using more elaborate techniques(like fine-tuning) might replace it in the near future.
+Now the recognition accuracy has reached around 94% with VGG16 + fine tuning, which is fairly good, although there is still room for improvement.
 
 ## Usage
 Access to https://recognize-dogs-and-cats.herokuapp.com/.
