@@ -1,6 +1,6 @@
 # Recognize Dogs and Cats
 
-This web service have a piece of softwarex (Convultional Neural Network) to recognize photos of dogs and cats and tells you whether the photo shows a dog or a cat.
+This web service has a piece of software (Convultional Neural Network) to recognize photos of dogs and cats and tells you whether the photo shows a dog or a cat.
 Your uploaded photos will be deleted immediately after the automatic recognition is done and never saved in the server.
 
 The photos used to train the neural network are acquired from a [Kaggle competition](https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition).
